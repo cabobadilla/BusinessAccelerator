@@ -174,7 +174,7 @@ def main():
         st.session_state.refined_idea = None
         st.session_state.key_elements = None
         st.session_state.marketing_strategies = None
-        st.experimental_rerun()
+        st.rerun()
 
 if __name__ == "__main__":
     main() 
