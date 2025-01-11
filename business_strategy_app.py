@@ -77,25 +77,31 @@ def main():
                 st.subheader("Refined Business Idea:")
                 st.write(st.session_state.refined_idea)
 
-    # Step 2: Specify the product or service
-    st.header("Step 2: Specify Product/Service")
-    if st.button("Identify Key Elements"):
+    # Step 2: Define Customer and Product Details
+    st.header("Step 2: Customer & Product Analysis")
+    if st.button("Analyze Core Elements"):
         if st.session_state.refined_idea:
-            with st.spinner("Identifying key elements..."):
+            with st.spinner("Analyzing critical business elements..."):
                 st.session_state.key_elements = generate_response(
                     f"Based on this refined business idea: {st.session_state.refined_idea}\n"
-                    "Analyze and detail the following business model elements:\n"
-                    "1. Customer Segments: Define target customers and their characteristics\n"
-                    "2. Value Proposition: Describe unique benefits and solutions offered\n" 
-                    "3. Channels: Identify how to reach and deliver value to customers\n"
-                    "4. Key Activities: List critical activities needed to operate\n"
-                    "5. Key Resources: Detail essential assets and resources required\n"
-                    "6. Key Partners: Specify important external partnerships and suppliers\n"
-                    "7. Revenue Streams: Outline how the business will generate income\n"
-                    "8. Cost Structure: Break down major costs and expenses"
+                    "Provide a detailed analysis focusing on the most critical initial elements:\n"
+                    "1. Target Customer Profile:\n"
+                    "   - Detailed demographic characteristics\n"
+                    "   - Key pain points and needs\n"
+                    "   - Customer behavior patterns\n"
+                    "   - Willingness and ability to pay\n\n"
+                    "2. Product/Service Specification:\n"
+                    "   - Core features and functionalities\n"
+                    "   - Unique selling propositions\n"
+                    "   - Minimum viable product (MVP) definition\n"
+                    "   - Product-market fit analysis\n\n"
+                    "3. Initial Go-to-Market Strategy:\n"
+                    "   - Primary customer acquisition channels\n"
+                    "   - Key messaging and positioning\n"
+                    "   - Initial pricing strategy"
                 )
                 if st.session_state.key_elements:
-                    st.subheader("Key Elements Analysis:")
+                    st.subheader("Core Business Elements:")
                     st.write(st.session_state.key_elements)
         else:
             st.warning("Please complete Step 1 first.")
@@ -107,14 +113,23 @@ def main():
             with st.spinner("Developing marketing strategies..."):
                 st.session_state.marketing_strategies = generate_response(
                     f"Based on these key elements: {st.session_state.key_elements}\n"
-                    "Develop a targeted marketing strategy that aligns with the identified customer segments, channels and key activities. Include:\n"
-                    "1. Specific marketing channels and tactics for each defined customer segment\n" 
-                    "2. Customer acquisition strategy leveraging the identified distribution channels\n"
-                    "3. Pricing strategy based on the value proposition and target segments\n"
-                    "4. Promotional tactics tailored to each channel and customer segment\n"
-                    "5. Brand positioning that emphasizes the key differentiators\n"
-                    "6. Marketing KPIs and success metrics for each channel\n"
-                    "7. Timeline and resource allocation for marketing activities"
+                    "Develop a detailed marketing execution plan focused on the specific product/service and target customers identified. Include:\n"
+                    "1. Product Marketing Strategy:\n"
+                    "   - Key product features and benefits to highlight\n"
+                    "   - Product positioning and messaging\n"
+                    "   - Product launch timeline and phases\n\n"
+                    "2. Customer Targeting Plan:\n" 
+                    "   - Detailed customer persona profiles\n"
+                    "   - Customer journey mapping\n"
+                    "   - Touchpoint optimization strategy\n\n"
+                    "3. Channel Strategy:\n"
+                    "   - Specific marketing channels to use (digital, traditional, etc.)\n"
+                    "   - Content and messaging for each channel\n"
+                    "   - Channel performance metrics\n\n"
+                    "4. Timeline and Implementation:\n"
+                    "   - 30-60-90 day marketing activities\n"
+                    "   - Resource requirements and budget allocation\n"
+                    "   - Success metrics and KPIs for each phase"
                 )
                 if st.session_state.marketing_strategies:
                     st.subheader("Marketing Strategy:")
@@ -123,48 +138,44 @@ def main():
             st.warning("Please complete Step 2 first.")
 
     # Step 4: Prepare business strategy and plan
-    st.header("Step 4: Business Strategy and Plan")
-    if st.button("Prepare Business Strategy"):
+    st.header("Step 4: Final Business Strategy")
+    if st.button("Generate Complete Business Strategy"):
         if st.session_state.marketing_strategies:
-            with st.spinner("Preparing comprehensive business strategy..."):
+            with st.spinner("Consolidating business strategy..."):
                 business_strategy = generate_response(
-                    f"Based on all previous analysis:\n"
+                    f"Based on previous analysis:\n"
                     f"Refined Idea: {st.session_state.refined_idea}\n"
                     f"Key Elements: {st.session_state.key_elements}\n"
                     f"Marketing Strategies: {st.session_state.marketing_strategies}\n"
-                    "Create an actionable implementation plan including:\n"
-                    "1. Executive Summary\n"
-                    "   - Vision and mission statement\n"
+                    "Create a clear and actionable business strategy including:\n"
+                    "1. Business Overview\n"
                     "   - Core value proposition\n"
-                    "   - Key objectives and goals\n\n"
-                    "2. Validation Plan\n"
-                    "   - Customer interviews and feedback collection methods\n" 
-                    "   - Minimum viable product (MVP) definition\n"
-                    "   - Market testing approach\n\n"
-                    "3. Implementation Roadmap\n"
-                    "   - 30-60-90 day action items\n"
-                    "   - Key milestones and deadlines\n"
-                    "   - Resource requirements and allocation\n\n"
-                    "4. Risk Assessment & Mitigation\n"
-                    "   - Market risks and competitive threats\n"
-                    "   - Operational challenges\n"
-                    "   - Financial risks\n"
-                    "   - Specific mitigation strategies for each risk\n\n"
-                    "5. Success Metrics & KPIs\n"
-                    "   - Customer acquisition and retention targets\n"
-                    "   - Revenue and profitability goals\n"
-                    "   - Market share objectives\n"
-                    "   - Product/service quality metrics\n\n"
-                    "6. Quick-win Opportunities\n"
-                    "   - Immediate action items for fast results\n"
-                    "   - Low-hanging fruit to build momentum\n"
-                    "   - Early validation opportunities"
+                    "   - Target market summary\n"
+                    "   - Revenue model\n\n"
+                    "2. Action Plan\n"
+                    "   - First 30 days priorities\n"
+                    "   - Required resources and budget\n"
+                    "   - Key partnerships needed\n\n"
+                    "3. Go-to-Market Strategy\n"
+                    "   - Customer acquisition channels\n"
+                    "   - Marketing tactics and timeline\n"
+                    "   - Initial pricing strategy\n\n"
+                    "4. Key Success Metrics\n"
+                    "   - Monthly revenue targets\n"
+                    "   - Customer growth goals\n"
+                    "   - Product milestones\n\n"
+                    "5. Risk Management\n"
+                    "   - Main business risks\n"
+                    "   - Mitigation strategies\n"
+                    "   - Contingency plans"
                 )
                 if business_strategy:
-                    st.subheader("Complete Business Strategy:")
+                    st.subheader("Your Complete Business Strategy:")
                     st.write(business_strategy)
+                    
+                    st.success("🎉 Congratulations! You now have a complete business strategy. Focus on executing these key elements to bring your idea to life.")
         else:
-            st.warning("Please complete Step 3 first.")
+            st.warning("Please complete the previous steps first.")
 
     # Add a reset button
     if st.button("Reset All"):
